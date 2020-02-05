@@ -1,0 +1,14 @@
+[Unit]
+Description=gost
+After=rc-local.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/
+ExecStart=/usr/local/sbin/gost -C /root/gost.json
+Restart=always
+LimitNOFILE=512000
+[Install]
+WantedBy=multi-user.target

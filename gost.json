@@ -1,0 +1,19 @@
+{
+    "Debug": false,
+    "Routes": [
+        {
+            "Retries": 5,
+            "ServeNodes": [
+                "ws://:8080"
+            ],
+            "ChainNodes": []
+        },
+        {
+            "Retries": 5,
+            "ServeNodes": [
+                "mwss://:443"
+            ],
+            "ChainNodes": []
+        }
+    ]
+}
