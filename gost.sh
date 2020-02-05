@@ -46,11 +46,11 @@ Install_gost(){
 	chmod +x /usr/local/sbin/gost && cd
 	cd /root && wget https://raw.githubusercontent.com/KagamigawaMeguri/gost-tool/master/gost.json && cd
 	if [[ ${release} = "centos" ]]; then
-		dnf install bind-utils
-		yum install bind-utils
+		dnf install bind-utils -y
+		yum install bind-utils -y
 		cd /usr/lib/systemd/system
 	else
-		apt install dnsutils
+		apt install dnsutils -y
 		cd /etc/systemd/system
 	fi
 	wget https://raw.githubusercontent.com/KagamigawaMeguri/gost-tool/master/gost.service
