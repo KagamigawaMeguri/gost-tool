@@ -48,12 +48,13 @@ Install_gost(){
 	if [[ ${release} = "centos" ]]; then
 		dnf install bind-utils
 		yum install bind-utils
-		cd /usr/lib/systemd/system && wget https://raw.githubusercontent.com/KagamigawaMeguri/gost-tool/master/gost.json/gost.service
+		cd /usr/lib/systemd/system
 	else
 		apt install dnsutils
-		cd /etc/systemd/system && wget https://raw.githubusercontent.com/KagamigawaMeguri/gost-tool/master/gost.json/gost.service
+		cd /etc/systemd/system
 	fi
-    systemctl enable gost && systemctl restart gost && cd
+	wget https://raw.githubusercontent.com/KagamigawaMeguri/gost-tool/master/gost.service
+    	systemctl enable gost && systemctl restart gost && cd
 	echo -e "${Info} Gost 安装完成 ! "
 }
 
