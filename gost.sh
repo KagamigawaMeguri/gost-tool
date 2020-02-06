@@ -40,9 +40,11 @@ check_installed_status(){
 
 Install_gost(){
 	[[ -e ${gost_file} ]] && echo -e "${Error} 检测到 Gost 已安装 !" && exit 1
-    # 默认AMD64
-    gost_url="https://github.com/ginuerzh/gost/releases/download/v2.10.0/gost-linux-amd64-2.10.0.gz"
-    wget $gost_url -O gost.gz && gunzip gost.gz && mv gost /usr/local/sbin
+    	# 默认AMD64
+    	VER="$(wget -qO- https://github.com/ginuerzh/gost/tags | grep -oE "/tag/v[^\"]*" | head -n1 | cut -dv -f2)"
+    	VER=${VER:=2.10.0}
+    	URL="https://github.com/ginuerzh/gost/releases/download/v${VER}/gost-linux-amd64-${VER}.gz"
+    	wget $URL -O gost.gz && gunzip gost.gz && mv gost /usr/local/sbin
 	chmod +x /usr/local/sbin/gost && cd
 	cd /root && wget https://raw.githubusercontent.com/KagamigawaMeguri/gost-tool/master/gost.json && cd
 	if [[ ${release} = "centos" ]]; then
